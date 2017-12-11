@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,12 +34,16 @@ public class gui extends JFrame{
 		f = new JFrame("Self Destructor :)");
 		
 		ImageIcon icon = new ImageIcon(getClass().getResource("icon.jpg"));  
+		ImageIcon icon1 = new ImageIcon(getClass().getResource("icon2.jpg"));  
 		f.setIconImage(icon.getImage());
 		
-		JPanel p = new JPanel();
-		p.setLayout(null);
+		JPanel pn = new JPanel();
+		pn.setLayout(null);
+
+		JLabel p = new JLabel(icon1);
 		
 		jl1 = new JLabel("Select File:");
+		jl1.setForeground(Color.WHITE);
 		jl1.setBounds(100, 50, 100, 30);
 		
 		jtf1 = new JTextField();
@@ -60,19 +66,21 @@ public class gui extends JFrame{
 		
 		jl2 = new JLabel("Enter Time: ");
 		jl2.setBounds(100, 100, 100, 30);
-		
+		jl2.setForeground(Color.WHITE);
 		
 		jtf2 = new JTextField();
 		jtf2.setBounds(170, 100, 250, 30);
 		
 		jb2 = new JButton("Start Self-Destruction");
-		jb2.setBounds(180, 200, 180, 30);
+		jb2.setBounds(210, 180, 150, 30);
 		jb2.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				TimerDemo clock = new TimerDemo();
-				clock.time.setBounds(250, 280, 100, 30);
+				clock.time.setBounds(210, 250, 200, 50);
+				clock.time.setFont(new Font("Serif", Font.BOLD, 48));
+				clock.time.setForeground(Color.WHITE);
 				
 				clock.start();
 				p.add(clock.time);
@@ -90,12 +98,14 @@ public class gui extends JFrame{
 		p.add(jtf2);
 		p.add(jb2);
 		
+		pn.add(p);
+		
 		f.add(p);
 		f.setLocation(500, 300);
 		f.setResizable(false);
 		f.setVisible(true);
 		f.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		f.setSize(500, 300);
+		f.setSize(500, 350);
 	}
 	
 	public void deleteFile() {
