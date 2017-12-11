@@ -43,14 +43,16 @@ public class gui extends JFrame{
 		JLabel p = new JLabel(icon1);
 		
 		jl1 = new JLabel("Select File:");
+		jl1.setFont(new Font("Serif", Font.BOLD, 16));
 		jl1.setForeground(Color.WHITE);
-		jl1.setBounds(100, 50, 100, 30);
+		jl1.setBounds(80, 50, 100, 30);
 		
 		jtf1 = new JTextField();
 		jtf1.setEditable(false);
 		jtf1.setBounds(170, 50, 200, 30);
 		
 		jb1 = new JButton("...");
+		jb1.setFont(new Font("Serif", Font.BOLD, 16));
 		jb1.setBounds(380, 50, 40, 30);
 		
 		jb1.addActionListener(new ActionListener() {
@@ -65,7 +67,8 @@ public class gui extends JFrame{
 		});
 		
 		jl2 = new JLabel("Enter Time: ");
-		jl2.setBounds(100, 100, 100, 30);
+		jl2.setFont(new Font("Serif", Font.BOLD, 16));
+		jl2.setBounds(80, 100, 100, 30);
 		jl2.setForeground(Color.WHITE);
 		
 		jtf2 = new JTextField();
@@ -73,12 +76,13 @@ public class gui extends JFrame{
 		
 		jb2 = new JButton("Start Self-Destruction");
 		jb2.setBounds(210, 180, 150, 30);
+		jb2.setFont(new Font("Serif", Font.BOLD, 14));
 		jb2.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				TimerDemo clock = new TimerDemo();
-				clock.time.setBounds(210, 250, 200, 50);
+				clock.time.setBounds(200, 250, 200, 50);
 				clock.time.setFont(new Font("Serif", Font.BOLD, 48));
 				clock.time.setForeground(Color.WHITE);
 				
@@ -119,7 +123,7 @@ public class gui extends JFrame{
 		        	File file = new File(jtf1.getText());
 		        	
 		        	if(file.delete()) {
-		        		int dialogResult = JOptionPane.showConfirmDialog(new JPanel(), "File Deleted Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+		        		int dialogResult = JOptionPane.showConfirmDialog(new JPanel(), "File Deleted Successfully!!!", "Success", JOptionPane.INFORMATION_MESSAGE);
 		        		if(dialogResult == JOptionPane.YES_OPTION){		        		  
 		        			f.dispose();
 		        		}
