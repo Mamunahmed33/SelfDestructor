@@ -27,7 +27,7 @@ class TimerMain {
         }, 0, 1000 );
     }
     
-    /*    public static void main( String [] args ) {
+    /*  public static void main( String [] args ) {
         JFrame frame = new JFrame();
         TimerDemo clock = new TimerDemo();
         frame.add( clock.time );

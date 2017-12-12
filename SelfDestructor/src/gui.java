@@ -31,7 +31,7 @@ public class gui extends JFrame{
 	}
 	
 	public void init() {
-		f = new JFrame("Self Destructor :)");
+		f = new JFrame("Self Destructor");
 		
 		ImageIcon icon = new ImageIcon(getClass().getResource("icon.jpg"));  
 		ImageIcon icon1 = new ImageIcon(getClass().getResource("icon2.jpg"));  
@@ -135,7 +135,6 @@ public class gui extends JFrame{
 		    };
 		    
 			timer.schedule(task, minutes);
-			
 			
 		}catch(Exception e) {
 			JOptionPane.showMessageDialog(new JPanel(), "Error Occured!", "Error", JOptionPane.ERROR_MESSAGE);
