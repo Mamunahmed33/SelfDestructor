@@ -66,12 +66,13 @@ public class gui extends JFrame{
 			}
 		});
 		
-		jl2 = new JLabel("Enter Time: ");
+		jl2 = new JLabel("Enter Time(Min.): ");
 		jl2.setFont(new Font("Serif", Font.BOLD, 16));
-		jl2.setBounds(80, 100, 100, 30);
+		jl2.setBounds(40, 100, 150, 30);
 		jl2.setForeground(Color.WHITE);
 		
 		jtf2 = new JTextField();
+		jtf2.setFont(new Font("Serif", Font.BOLD, 18));
 		jtf2.setBounds(170, 100, 250, 30);
 		
 		jb2 = new JButton("Start Self-Destruction");
@@ -81,8 +82,8 @@ public class gui extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TimerDemo clock = new TimerDemo();
-				clock.time.setBounds(200, 250, 200, 50);
+				TimerMain clock = new TimerMain();
+				clock.time.setBounds(195, 250, 200, 50);
 				clock.time.setFont(new Font("Serif", Font.BOLD, 48));
 				clock.time.setForeground(Color.WHITE);
 				
@@ -105,11 +106,11 @@ public class gui extends JFrame{
 		pn.add(p);
 		
 		f.add(p);
-		f.setLocation(500, 300);
+		f.setLocation(500, 320);
 		f.setResizable(false);
 		f.setVisible(true);
 		f.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		f.setSize(500, 350);
+		f.setSize(500, 370);
 	}
 	
 	public void deleteFile() {
@@ -123,10 +124,8 @@ public class gui extends JFrame{
 		        	File file = new File(jtf1.getText());
 		        	
 		        	if(file.delete()) {
-		        		int dialogResult = JOptionPane.showConfirmDialog(new JPanel(), "File Deleted Successfully!!!", "Success", JOptionPane.INFORMATION_MESSAGE);
-		        		if(dialogResult == JOptionPane.YES_OPTION){		        		  
-		        			f.dispose();
-		        		}
+		        		JOptionPane.showMessageDialog(new JPanel(), "File Deleted Successfully!!!", "Success", JOptionPane.INFORMATION_MESSAGE);
+		        		f.dispose();
 		        		
 		        	}else {
 		        		JOptionPane.showMessageDialog(new JPanel(), "File can not be deleted!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -140,6 +139,7 @@ public class gui extends JFrame{
 			
 		}catch(Exception e) {
 			JOptionPane.showMessageDialog(new JPanel(), "Error Occured!", "Error", JOptionPane.ERROR_MESSAGE);
+			f.dispose();
 		}
 	}
 }

@@ -3,7 +3,7 @@ import java.util.*;
 import java.util.Timer;
 import java.text.SimpleDateFormat;
 
-class TimerDemo {
+class TimerMain {
     public final JLabel time = new JLabel();
     private final SimpleDateFormat sdf  = new SimpleDateFormat("hh:mm");
     private int currentSecond;
