@@ -1,11 +1,14 @@
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import com.jtattoo.plaf.smart.SmartLookAndFeel;
 
 public class FileChooser extends JFrame{
 	private static FileChooser instance= null;
+	private String filePath = "";
 	
-	FileChooser() {
+	private FileChooser() {
 		
 	}
 	
@@ -18,18 +21,32 @@ public class FileChooser extends JFrame{
 		return instance;
 	}
 	
-	public String getFile(String initialPath) {
-		JFileChooser fChooser = new JFileChooser();
+	public File[] getFile(String initialPath) {
 		
+		try {
+				UIManager.setLookAndFeel(new SmartLookAndFeel());
+				
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		
+		JFileChooser fChooser = new JFileChooser();
+		fChooser.setMultiSelectionEnabled(true);
+				
 		fChooser.setCurrentDirectory(new File(initialPath));
 		int filechoosen = fChooser.showOpenDialog(new JFrame());
 		
 		if(filechoosen == fChooser.APPROVE_OPTION){
+			filePath = fChooser.getSelectedFile().toString();
 			
-			return fChooser.getSelectedFile().toString();
+			return fChooser.getSelectedFiles();
 		}
 		
-		return "";
+		return null;
+	}
+	
+	public String getFilePath() {
+		return filePath;
 	}
 	
 }

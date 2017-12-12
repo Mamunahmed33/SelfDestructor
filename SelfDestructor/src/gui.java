@@ -5,12 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.nio.file.Files;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -19,11 +21,12 @@ import javax.swing.JTextField;
 
 public class gui extends JFrame{
 	private Timer previousTime;
+	private File[] selectedFiles;
 	
-	JFrame f;
-	JLabel jl1, jl2;
-	JTextField jtf1, jtf2;
-	JButton jb1, jb2;
+	private JFrame f;
+	private JLabel jl1, jl2;
+	private JTextField jtf1, jtf2;
+	private JButton jb1, jb2;
 	
 	
 	gui(){
@@ -59,9 +62,10 @@ public class gui extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FileChooser fc = new FileChooser();
+				FileChooser fc = FileChooser.getFileChooserInstance();
+				selectedFiles =  fc.getFile("");
 				
-				jtf1.setText(fc.getFile(""));
+				jtf1.setText(fc.getFilePath());
 				
 			}
 		});
@@ -121,9 +125,16 @@ public class gui extends JFrame{
 			
 			TimerTask task = new TimerTask() {
 		        public void run() {
-		        	File file = new File(jtf1.getText());
+		        	//File file = new File(jtf1.getText());
+		        	int count = 0;
 		        	
-		        	if(file.delete()) {
+		        	for(File f : selectedFiles) {
+		        		if(f.delete()) {
+		        			count++;
+		        		}
+		        	}
+		        	
+		        	if(count == selectedFiles.length) {
 		        		JOptionPane.showMessageDialog(new JPanel(), "File Deleted Successfully!!!", "Success", JOptionPane.INFORMATION_MESSAGE);
 		        		f.dispose();
 		        		
